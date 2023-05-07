@@ -10,3 +10,10 @@ SELECT
 FROM invoices
 WHERE YEAR(invoice_date) = '2019'
 GROUP BY 1;
+
+-- Solution to Capture2
+SELECT p.date, p_m.name as payment_method, SUM(p.amount) as total_payments
+FROM payments p
+JOIN payment_methods p_m ON p.payment_method = p_m.payment_method_id
+GROUP BY date, payment_method
+ORDER BY date;
