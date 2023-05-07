@@ -17,3 +17,11 @@ FROM payments p
 JOIN payment_methods p_m ON p.payment_method = p_m.payment_method_id
 GROUP BY date, payment_method
 ORDER BY date;
+
+-- Solution to Capture3
+SELECT payment_method, SUM(amount) as total
+FROM payments
+GROUP BY payment_method
+UNION
+SELECT NULL, SUM(amount)
+FROM payments;
